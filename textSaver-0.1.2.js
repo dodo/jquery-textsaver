@@ -1,9 +1,11 @@
 /*
 	textSaver.js v0.1.2
 	Copyright (c) 2011 David Hu (http://davidhu.me)
+	forked by dodo (https://github.com/dodo)
 	Licensed under the GNU General Public License v3 (http://www.gnu.org/licenses/gpl.html)
 	
 	For more information, see: http://davidhu.me/textsaver
+	or look at the fork, see: https://github.com/dodo/jquery-textsaver
 */
 
 (function($) {
