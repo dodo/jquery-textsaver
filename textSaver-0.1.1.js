@@ -18,7 +18,9 @@
 			tsVars.tsNames[m] = [];
 			if($(this).get(0).tagName == "FORM") {
 				$(this).children("input, textarea").each(function() {
-					ts($(this), m);
+					if($(this).data('textSaver'))
+						$(this).data('textSaver').destroy();
+					$(this).data('textSaver', new TextSaver($(this), m));
 				});
 				$(this).submit(function() {
 					for(var k in tsVars.tsNames[m]) {
@@ -26,22 +28,40 @@
 					}
 				});
 			} else {
-				ts($(this), m);
+				if($(this).data('textSaver'))
+					$(this).data('textSaver').destroy();
+				$(this).data('textSaver', new TextSaver($(this), m));
 			}
 			tsVars.n++;
 		});
 	}
 	
-	function ts(obj, m) {
-		var tsName = get_tsName(obj, m);
-		if(localStorage.getItem(tsName) != null) {
-			obj.val(localStorage.getItem(tsName));
+	function TextSaver(obj, m) {
+		this.obj = obj;
+		this.tsName = get_tsName(obj, m);
+		if(localStorage.getItem(this.tsName) != null) {
+			obj.val(localStorage.getItem(this.tsName));
 		}
-		obj.bind('keyup', function() {
-			localStorage.setItem(tsName, obj.val());
+		var my = this;
+		obj.bind('keyup', this.onkeyup = function () {
+			localStorage.setItem(my.tsName, my.obj.val());
 		});
 	}
 	
+	TextSaver.prototype.destroy = function () {
+		this.obj.unbind('keyup', this.onkeyup);
+		this.clear();
+	};
+
+	TextSaver.prototype.clear = function () {
+		localStorage.removeItem(this.tsName);
+	};
+
+	// expose constructor
+	$.TextSaver = TextSaver;
+
+	/* helper */
+
 	function get_tsName(obj, m) {
 		var tsName = obj.parent().attr('id');
 		if(!tsName) {
