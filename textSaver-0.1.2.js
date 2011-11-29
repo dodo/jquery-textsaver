@@ -1,5 +1,5 @@
 /*
-	textSaver.js v0.1.1
+	textSaver.js v0.1.2
 	Copyright (c) 2011 David Hu (http://davidhu.me)
 	Licensed under the GNU General Public License v3 (http://www.gnu.org/licenses/gpl.html)
 	
