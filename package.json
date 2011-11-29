@@ -1,0 +1,8 @@
+{ "name": "jquery-textsaver"
+, "description": "Use the power of jQuery and localStorage and allow your users to fill out forms worry-free"
+, "version": "0.0.1"
+, "homepage": "https://github.com/dodo/jquery-textsaver"
+, "author": "David Hu (http://d.aweed.us)"
+, "repository": {"type": "git", "url": "git://github.com/dodo/jquery-textsaver.git"}
+, "engines": {"browser": ""}
+}
