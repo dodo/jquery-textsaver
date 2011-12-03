@@ -27,3 +27,10 @@ $(document).ready(function() {
 ```
 
 Nevertheless, .textSaver() can still be called on individual textareas or input text fields if you only want certain fields to be savable.
+
+optional
+========
+
+To have a more robust responsebility you can add the special input event plugin which uses the new `oninput` event and works for old browsers as well.
+
+[`input` special event](https://github.com/dodo/jquery-inputevent)

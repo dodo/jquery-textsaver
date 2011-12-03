@@ -14,6 +14,7 @@
 		n: 0, // used in case we need to keep track of multiple forms (for submitting/clearing purposes)
 		tsNames: []
 	};
+	var oninput = $.event.special.txtinput ? 'txtinput' : 'keyup';
 	$.fn.textSaver = function() {
 		return this.each(function() {
 			var m = tsVars.n;
@@ -45,13 +46,13 @@
 			obj.val(localStorage.getItem(this.tsName));
 		}
 		var my = this;
-		obj.bind('keyup', this.onkeyup = function () {
+		obj.bind(oninput, this.onkeyup = function () {
 			localStorage.setItem(my.tsName, my.obj.val());
 		});
 	}
 	
 	TextSaver.prototype.destroy = function () {
-		this.obj.unbind('keyup', this.onkeyup);
+		this.obj.unbind(oninput, this.onkeyup);
 		this.clear();
 	};
 
