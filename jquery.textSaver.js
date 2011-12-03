@@ -49,6 +49,8 @@
 		obj.bind(oninput, this.onkeyup = function () {
 			localStorage.setItem(my.tsName, my.obj.val());
 		});
+		obj.trigger('txtinput');
+		obj.keyup();
 	}
 	
 	TextSaver.prototype.destroy = function () {
